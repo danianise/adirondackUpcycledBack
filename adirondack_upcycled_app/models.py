@@ -1,3 +1,18 @@
 from django.db import models
 
-# Create your models here.
+class Category(models.Model):
+    type=models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.type
+
+class Listing(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='categories', default=1)
+    title = models.CharField(max_length=100)
+    photo = models.ImageField(upload_to='images/')
+    price = models.DecimalField(max_digits=7, decimal_places=2)
+    description = models.TextField()
+    available = models.BooleanField()
+
+    def __STR__(self):
+        return '{}, ${}'.format(self.title, self.price)
