@@ -5,7 +5,7 @@ from .models import Category, Listing
 from rest_framework.views import APIView
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, generics, permissions
 
 class ListingView(APIView):
     parser_classes = (MultiPartParser, FormParser)
@@ -23,3 +23,15 @@ class ListingView(APIView):
         else:
             print('error', listings_serializer.errors)
             return Response(listings_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class CategoryView(generics.ListCreateAPIView):
+    serializer_class = CategorySerializer
+    queryset = Category.objects.all()
+
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+# class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
+#     serializer_class = CategorySerializer
+#     queryset = Category.objects.all()
+
+#     permission_classes = [permissions.IsAuthenticatedOrReadOnly]

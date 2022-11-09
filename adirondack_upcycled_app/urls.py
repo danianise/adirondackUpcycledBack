@@ -5,6 +5,7 @@ from . import views
 
 urlpatterns = [
     path('listings/', views.ListingView.as_view(), name='listings_all'),
+    path('categories/', views.CategoryView.as_view(), name='categories_all')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
