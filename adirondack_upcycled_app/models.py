@@ -14,5 +14,5 @@ class Listing(models.Model):
     description = models.TextField()
     available = models.BooleanField(default='True')
 
-    def __STR__(self):
+    def __str__(self):
         return '{}, ${}'.format(self.title, self.price)
