@@ -7,7 +7,19 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 from rest_framework import status, generics, permissions
 
-class ListingView(APIView):
+class CategoryView(generics.ListCreateAPIView):
+    serializer_class = CategorySerializer
+    queryset = Category.objects.all()
+
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = CategorySerializer
+    queryset = Category.objects.all()
+
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+class ListingList(APIView):
     parser_classes = (MultiPartParser, FormParser)
 
     def get(self, request, *args, **kwargs):
@@ -24,14 +36,8 @@ class ListingView(APIView):
             print('error', listings_serializer.errors)
             return Response(listings_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class CategoryView(generics.ListCreateAPIView):
-    serializer_class = CategorySerializer
-    queryset = Category.objects.all()
+class ListingDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = ListingSerializer
+    queryset = Listing.objects.all()
 
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-
-# class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
-#     serializer_class = CategorySerializer
-#     queryset = Category.objects.all()
-
-#     permission_classes = [permissions.IsAuthenticatedOrReadOnly]

@@ -4,8 +4,11 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
-    path('listings/', views.ListingView.as_view(), name='listings_all'),
-    path('categories/', views.CategoryView.as_view(), name='categories_all')
+    path('categories/', views.CategoryView.as_view(), name='categories_all'),
+    path('categories/<int:pk>', views.CategoryDetail.as_view(), name='category_detail'),
+
+    path('listings/', views.ListingList.as_view(), name='listings_all'),
+    path('listings/<int:pk>', views.ListingDetail.as_view(), name='listing_detail')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
