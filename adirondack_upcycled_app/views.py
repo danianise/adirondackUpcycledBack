@@ -41,3 +41,4 @@ class ListingDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Listing.objects.all()
 
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
