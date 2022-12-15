@@ -1,7 +1,7 @@
 from ast import For
 from django.shortcuts import render
-from .serializers import CategorySerializer, ListingSerializer
-from .models import Category, Listing
+from .serializers import CategorySerializer, ListingSerializer, EventSerializer
+from .models import Category, Listing, Event
 from rest_framework.views import APIView
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
@@ -42,3 +42,14 @@ class ListingDetail(generics.RetrieveUpdateDestroyAPIView):
 
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
+class EventView(generics.ListCreateAPIView):
+    serializer_class = EventSerializer
+    queryset = Event.objects.all()
+
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+class EventDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = EventSerializer
+    queryset = Event.objects.all()
+
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]

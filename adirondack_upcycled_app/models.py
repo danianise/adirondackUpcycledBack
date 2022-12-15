@@ -23,3 +23,13 @@ class Listing(models.Model):
 
     def __str__(self):
         return '{}, ${}'.format(self.title, self.price)
+
+class Event(models.Model):
+    eventName = models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
+    dateTime = models.DateTimeField()
+    description = models.TextField()
+    archive = models.BooleanField(default='False')
+
+    def __str__(self):
+        return '{}, {}'.format(self.eventName, self.dateTime)
