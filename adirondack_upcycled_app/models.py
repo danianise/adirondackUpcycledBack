@@ -19,7 +19,7 @@ class Listing(models.Model):
     photo5 = models.ImageField(upload_to='images/', null=True, blank=True)
     price = models.DecimalField(max_digits=7, decimal_places=2, default=9999.99)
     description = models.TextField()
-    available = models.BooleanField(default='True')
+    available = models.BooleanField(default=True)
 
     def __str__(self):
         return '{}, ${}'.format(self.title, self.price)
@@ -29,7 +29,7 @@ class Event(models.Model):
     location = models.CharField(max_length=100)
     dateTime = models.DateTimeField()
     description = models.TextField()
-    archive = models.BooleanField(default='False')
+    archive = models.BooleanField(default=False)
 
     def __str__(self):
         return '{}, {}'.format(self.eventName, self.dateTime)
