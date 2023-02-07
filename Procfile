@@ -1,0 +1,1 @@
+web: gunicorn adirondack_upcycled.wsgi
