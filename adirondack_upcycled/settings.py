@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'adirondack_upcycled_app',
     'rest_framework',
     'corsheaders',
+    'model_utils',
 ]
 
 MIDDLEWARE = [
