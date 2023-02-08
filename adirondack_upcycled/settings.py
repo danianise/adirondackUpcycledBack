@@ -96,7 +96,7 @@ DATABASES = {
     #     'PASSWORD': '4dminPassw0rd!',
     #     'HOST': 'localhost'
     # }
-    'default': dj_database_url.config(conn_max_age=600)
+    'default': dj_database_url.config(default='postgresql://postgres:ABDZtb56UrJMWiWTNSji@containers-us-west-180.railway.app:7372/railway', conn_max_age=600)
 }
 
 
