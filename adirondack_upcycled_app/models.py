@@ -3,7 +3,9 @@ from model_utils import Choices
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
-    id = models.BigAutoField(primary_key=True)
+    ID = Choices(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    # id = models.BigAutoField(primary_key=True)
+    id = models.IntegerField(choices=ID, default=1, primary_key=True)
     hrefName = models.CharField(max_length=50, default="")
 
     def __str__(self):
