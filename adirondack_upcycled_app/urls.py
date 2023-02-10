@@ -13,3 +13,5 @@ urlpatterns = [
     path('events/', views.EventView.as_view(), name='events_all'),
     path('events/<int:pk>', views.EventDetail.as_view(), name='event_detail'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
