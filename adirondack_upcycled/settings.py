@@ -154,7 +154,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 cloudinary.config( 
-  cloud_name = 'di5yeg78v', 
-  api_key = '633397713948563', 
-  api_secret = 'bPM-lOX_fHUqYLG8s26VJnfivgs' 
+  cloud_name = os.environ['CLOUD_NAME'], 
+  api_key = os.environ['CLOUDINARY_API_KEY'], 
+  api_secret = os.environ['CLOUDINARY_API_SECRET'] 
 )
