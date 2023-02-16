@@ -39,6 +39,7 @@ class Listing(models.Model):
 class Event(models.Model):
     eventName = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
+    url = models.URLField(max_length=200, blank=True, null=True)
     dateTime = models.DateTimeField()
     description = models.TextField()
     archive = models.BooleanField(default=False)
