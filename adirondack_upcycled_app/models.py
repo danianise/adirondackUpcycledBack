@@ -1,5 +1,6 @@
 from django.db import models
 from model_utils import Choices
+from cloudinary.models import CloudinaryField
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
@@ -14,7 +15,8 @@ class Category(models.Model):
 class Listing(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='categories', default=1)
     title = models.CharField(max_length=100)
-    mainPhoto = models.ImageField(upload_to='images/')
+    # mainPhoto = models.ImageField(upload_to='images/')
+    mainPhoto = CloudinaryField('image')
     photo1 = models.ImageField(upload_to='images/', null=True, blank=True)
     photo2 = models.ImageField(upload_to='images/', null=True, blank=True)
     photo3 = models.ImageField(upload_to='images/', null=True, blank=True)

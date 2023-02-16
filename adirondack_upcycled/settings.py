@@ -14,6 +14,10 @@ from pathlib import Path
 import os
 import dj_database_url
 
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -48,6 +52,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'model_utils',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -147,3 +152,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+cloudinary.config( 
+  cloud_name = 'di5yeg78v', 
+  api_key = '633397713948563', 
+  api_secret = 'bPM-lOX_fHUqYLG8s26VJnfivgs' 
+)
